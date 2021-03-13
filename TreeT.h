@@ -44,6 +44,8 @@ private:
     // Used for de-constructor
     void DestroyTree(Node* node);
 
+    bool ContainsHelper(Node* curr, T value);
+
     // Used for Node removal
     void RemoveHelper(Node*& subtree, T value);
     void DeleteNode(Node*& subtree);

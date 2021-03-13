@@ -119,21 +119,38 @@ void TreeT<T>::GetPredecessor(TreeT::Node *curr, T& value) {
 
 template<class T>
 bool TreeT<T>::Contains(T value) {
-    Node* curr = root;
+    return ContainsHelper(root, value);
+}
 
-    while(curr != nullptr) {
+/*
+template<class T>
+bool TreeT<T>::Contains(T value) {
+    Node *curr = root;
+
+    while (curr != nullptr) {
         if (value == curr->value) {
             return true;
-        }
-        else if (value < curr->value) {
+        } else if (value < curr->value) {
             curr = curr->left;
-        }
-        else {
+        } else {
             curr = curr->right;
         }
     }
 
     return false;
+}*/
+
+template<class T>
+bool TreeT<T>::ContainsHelper(Node* curr, T value) {
+    if(curr== nullptr)
+        return false;
+    if(value==curr->value)
+        return true;
+
+    if(value<curr->value)
+        return ContainsHelper(curr->left, value);
+    else
+        return ContainsHelper(curr->right, value);
 }
 
 template<class T>
